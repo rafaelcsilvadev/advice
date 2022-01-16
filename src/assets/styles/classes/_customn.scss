@@ -1,0 +1,25 @@
+.h-100vh {
+	height: 100vh;
+}
+
+.w-100vw {
+	width: 100vw;
+}
+
+.text-size-1_8 {
+	font-size: 1.8rem;
+	@media screen and (min-width: 400px) {
+		font-size: 2rem;
+	}
+
+	@media screen and (min-width: 800px) {
+		font-size: 3rem;
+	}
+}
+
+.background-sky {
+	background-image: url("../../images/sky.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
