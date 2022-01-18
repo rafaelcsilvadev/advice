@@ -1,23 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import Layout from "../../components/layout";
 import PresentationSystem from "../../components/presentation";
 
 export default function Home() {
-	const [showScreen, setSshowScreen] = useState<boolean>(false);
-
-	useEffect(() => {
-		console.log(showScreen);
-	}, [showScreen]);
-
 	return (
 		<div>
-			<PresentationSystem
-				greeting={(value: boolean) => setSshowScreen(value)}
-			/>
-			{showScreen && (
-				<div>
-					<span>oiiii</span>
+			<PresentationSystem />
+			<Layout>
+				<div className="background-sky h-100vh w-100vw">
 				</div>
-			)}
+			</Layout>
 		</div>
 	);
 }
+

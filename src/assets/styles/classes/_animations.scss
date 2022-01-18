@@ -25,3 +25,12 @@
 .animation-text-end {
 	opacity: 1;
 }
+
+.animate-salutation-start{
+	opacity: 2;
+	transition: all 1.2s linear;
+}
+
+.animate-salutation-end{
+	opacity: 0;
+}

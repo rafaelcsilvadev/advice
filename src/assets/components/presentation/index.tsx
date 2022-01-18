@@ -1,14 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import Monge from "../../images/monge.png";
 
-interface IProps {
-	greeting: any;
-}
-
-export default function PresentationSystem(props: IProps) {
-	const [greeting, setGreeting] = useState<boolean>(true);
-
+export default function PresentationSystem() {
 	const animationMonge = () => {
 		const monge = document.querySelector("#monge");
 		monge?.classList.add("animation-monge-end");
@@ -20,8 +14,11 @@ export default function PresentationSystem(props: IProps) {
 	};
 
 	const closeGreeting = () => {
-		setGreeting(false);
-		props.greeting(greeting);
+		const salutation = document.querySelector("#salutation");
+		salutation?.classList.add("animate-salutation-end");
+		setTimeout(() => {
+			salutation?.classList.add("d-none");
+		}, 1500);
 	};
 
 	useEffect(() => {
@@ -36,28 +33,29 @@ export default function PresentationSystem(props: IProps) {
 
 	return (
 		<>
-			{greeting && (
-				<div className="background-sky">
-					<div className="h-100vh w-100vw d-flex flex-column justify-content-center align-items-center">
-						<div className="d-flex flex-row justify-content-center align-items-center">
-							<img
-								id="monge"
-								src={Monge}
-								alt="Monge"
-								className="animation-monge-start"
-							/>
-						</div>
-						<div className="d-flex flex-row text-center">
-							<h1
-								id="greeting"
-								className="text-size-1_8 text-light title-size animation-text-start"
-							>
-								Welcome to the Counsel
-							</h1>
-						</div>
+			<div
+				id="salutation"
+				className="background-sky h-100vh w-100vw position-absolute animate-salutation-start"
+			>
+				<div className="d-flex flex-column h-100vh w-100vw justify-content-center align-items-center">
+					<div className="d-flex flex-row justify-content-center align-items-center">
+						<img
+							id="monge"
+							src={Monge}
+							alt="Monge"
+							className="animation-monge-start"
+						/>
+					</div>
+					<div className="d-flex flex-row text-center">
+						<h1
+							id="greeting"
+							className="text-size-1_8 text-light title-size animation-text-start"
+						>
+							Welcome to the Counsel
+						</h1>
 					</div>
 				</div>
-			)}
+			</div>
 		</>
 	);
 }
