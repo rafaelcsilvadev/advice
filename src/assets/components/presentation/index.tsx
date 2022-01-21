@@ -49,7 +49,7 @@ export default function PresentationSystem() {
 							id="greeting"
 							className="text-size-1_8 text-light title-size animation-text-start"
 						>
-							Welcome to the Counsel
+							Welcome to the Advice
 						</h1>
 					</div>
 				</div>
