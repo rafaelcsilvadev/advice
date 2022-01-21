@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useCallback, useState } from "react";
+import functions from "../functions";
 
 const storeContext = createContext<any>(0);
 
@@ -7,11 +8,24 @@ interface IProps {
 }
 
 function Store({ children }: IProps) {
-	const [example, setExample] = useState<number>(0);
+	const [presentation, setPresentation] = useState<Promise<boolean> | boolean>(
+		false
+	);
+	const { presentationWasShown } = functions;
+
+	const presentationStorage = useCallback(() => {
+		const result = presentationWasShown();
+		setPresentation(result);
+	}, [presentation]);
 
 	return (
 		// eslint-disable-next-line react/jsx-no-constructed-context-values
-		<storeContext.Provider value={{ example, setExample }}>
+		<storeContext.Provider
+			value={{
+				presentationStorage,
+				presentation,
+			}}
+		>
 			{children}
 		</storeContext.Provider>
 	);

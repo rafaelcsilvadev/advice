@@ -1,49 +1,47 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import storeContext from "../../../utils/stores/store";
+import functions from "../../../utils/functions";
 
-import Monge from "../../images/monge.png";
+import Monk from "../../images/monk.png";
 
 export default function PresentationSystem() {
-	const animationMonge = () => {
-		const monge = document.querySelector("#monge");
-		monge?.classList.add("animation-monge-end");
-	};
+	const { presentationStorage } = useContext(storeContext);
+	const { delay, animations } = functions;
 
-	const animationGreeting = () => {
-		const monge = document.querySelector("#greeting");
-		monge?.classList.add("animation-text-end");
-	};
+	const animatingPresentation = () => {
+		const elementInfo = [
+			{ id: "monk", cssClass: "animation-monk-end", time: 0 },
+			{ id: "greeting", cssClass: "animation-text-end", time: 1000 },
+			{ id: "salutation", cssClass: "animate-salutation-end", time: 4000 },
+			{ id: "salutation", cssClass: "d-none", time: 6500 },
+		];
 
-	const closeGreeting = () => {
-		const salutation = document.querySelector("#salutation");
-		salutation?.classList.add("animate-salutation-end");
-		setTimeout(() => {
-			salutation?.classList.add("d-none");
-		}, 1500);
+		for (let i in elementInfo) {
+			const { id, cssClass, time } = elementInfo[i];
+			const { addClass } = animations;
+			delay(() => addClass(id, cssClass), time);
+		}
+
+		delay(() => presentationStorage(), 7500);
 	};
 
 	useEffect(() => {
-		animationMonge();
-		setTimeout(() => {
-			animationGreeting();
-		}, 1000);
-		setTimeout(() => {
-			closeGreeting();
-		}, 4000);
+		animatingPresentation();
 	}, []);
 
 	return (
 		<>
 			<div
 				id="salutation"
-				className="background-sky h-100vh w-100vw position-absolute animate-salutation-start"
+				className="background-sky position-absolute animate-salutation-start"
 			>
 				<div className="d-flex flex-column h-100vh w-100vw justify-content-center align-items-center">
 					<div className="d-flex flex-row justify-content-center align-items-center">
 						<img
-							id="monge"
-							src={Monge}
-							alt="Monge"
-							className="animation-monge-start"
+							id="monk"
+							src={Monk}
+							alt="Monk"
+							className="animation-monk-start"
 						/>
 					</div>
 					<div className="d-flex flex-row text-center">

@@ -1,11 +1,11 @@
-.animation-monge-start {
+.animation-monk-start {
 	width: 100%;
 	transform-origin: center;
 	transform: translateY(0);
 	transition: all 1s linear;
 }
 
-.animation-monge-end {
+.animation-monk-end {
 	width: 80%;
 	transform: translateY(-5rem);
 }
@@ -26,11 +26,11 @@
 	opacity: 1;
 }
 
-.animate-salutation-start{
+.animate-salutation-start {
 	opacity: 2;
 	transition: all 1.2s linear;
 }
 
-.animate-salutation-end{
+.animate-salutation-end {
 	opacity: 0;
 }
