@@ -37,12 +37,12 @@ export default function Layout({ children }: any) {
 							<NavLink to="/" className="nav-link">
 								Home
 							</NavLink>
-							<NavLink to="/about" className="nav-link">
+							{/* <NavLink to="/about" className="nav-link">
 								About
 							</NavLink>
 							<NavLink to="/author" className="nav-link">
 								Author
-							</NavLink>
+							</NavLink> */}
 						</Nav>
 					</Container>
 				</Navbar>
