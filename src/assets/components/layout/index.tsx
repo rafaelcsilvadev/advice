@@ -46,7 +46,7 @@ export default function Layout({ children }: any) {
 						</Nav>
 					</Container>
 				</Navbar>
-				{children}
+				{presentation ? children : null}
 			</section>
 		</>
 	);

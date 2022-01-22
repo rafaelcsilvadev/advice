@@ -17,6 +17,21 @@
 	}
 }
 
+.text-size-2-1_8 {
+	font-size: 1.8rem;
+}
+
+.text-size-2-1 {
+	font-size: 1.2rem;
+}
+
+.card-size {
+	width: 100%;
+	@media screen and (min-width: 800px) {
+		width: 40rem;
+	}
+}
+
 .background-sky {
 	background-image: url("../../images/sky.png");
 	background-position: center;
@@ -27,6 +42,21 @@
 .bg-primary {
 	--bs-bg-opacity: 1;
 	background-color: $blue !important;
+}
+
+.bg-primary-rgba {
+	--bs-bg-opacity: 1;
+	background-color: $blue-rgba !important;
+}
+
+.bg-secondary {
+	--bs-bg-opacity: 1;
+	background-color: $dark-blue !important;
+}
+
+.button-size-hover:hover {
+	width: 90% !important;
+	transition: width 1s linear;
 }
 
 .navbar {
@@ -43,4 +73,14 @@
 .navbar-dark .navbar-nav .nav-link {
 	font-size: 1rem;
 	font-weight: 700;
+}
+
+.button-size-hover-end:hover {
+	width: 90% !important;
+	transition: width 1s linear;
+}
+
+.button-size-hover-start {
+	width: 50%;
+	transition: width 1s linear;
 }

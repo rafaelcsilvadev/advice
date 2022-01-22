@@ -12,7 +12,7 @@ export default function PresentationSystem() {
 		const elementInfo = [
 			{ id: "monk", cssClass: "animation-monk-end", time: 0 },
 			{ id: "greeting", cssClass: "animation-text-end", time: 1000 },
-			{ id: "salutation", cssClass: "animate-salutation-end", time: 4000 },
+			{ id: "salutation", cssClass: "animation-salutation-end", time: 4000 },
 			{ id: "salutation", cssClass: "d-none", time: 6500 },
 		];
 
@@ -22,7 +22,7 @@ export default function PresentationSystem() {
 			delay(() => addClass(id, cssClass), time);
 		}
 
-		delay(() => presentationStorage(), 7500);
+		delay(() => presentationStorage(), 5000);
 	};
 
 	useEffect(() => {
@@ -33,7 +33,7 @@ export default function PresentationSystem() {
 		<>
 			<div
 				id="salutation"
-				className="background-sky position-absolute animate-salutation-start"
+				className="background-sky position-absolute animation-salutation-start"
 			>
 				<div className="d-flex flex-column h-100vh w-100vw justify-content-center align-items-center">
 					<div className="d-flex flex-row justify-content-center align-items-center">

@@ -1,3 +1,21 @@
+%animationOpacity-0 {
+	opacity: 0;
+	transition: all 1.2s linear;
+}
+
+%animationOpacity-1 {
+	opacity: 1;
+	transition: all 1.2s linear;
+}
+
+%show {
+	opacity: 1;
+}
+
+%hide {
+	opacity: 0;
+}
+
 .animation-monk-start {
 	width: 100%;
 	transform-origin: center;
@@ -12,25 +30,30 @@
 
 .animation-text-start {
 	display: none;
-	opacity: 0;
-	transition: all 1 linear;
+	@extend %animationOpacity-0;
 }
 
 .animation-text-start {
 	display: block;
-	opacity: 0;
-	transition: all 1.2s linear;
+	@extend %animationOpacity-0;
 }
 
 .animation-text-end {
-	opacity: 1;
+	@extend %show;
 }
 
-.animate-salutation-start {
-	opacity: 2;
-	transition: all 1.2s linear;
+.animation-salutation-start {
+	@extend %animationOpacity-1;
 }
 
-.animate-salutation-end {
-	opacity: 0;
+.animation-salutation-end {
+	@extend %hide;
+}
+
+.animation-advice-start {
+	@extend %animationOpacity-0;
+}
+
+.animation-advice-end {
+	@extend %show;
 }

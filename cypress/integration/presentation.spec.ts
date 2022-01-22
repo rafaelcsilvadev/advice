@@ -1,47 +1,40 @@
 /// <reference types="cypress" />
+import functions from "../functions";
 
 describe("Check presentation animate", () => {
-	it("CSS class in monk image", () => {
+	it("Test", () => {
 		cy.clearLocalStorage();
-		cy.visit("/");
-		cy.get("#monk").should("satisfy", ($el) => {
-			const classList = Array.from($el[0].classList);
-			return (
-				classList.includes("animation-monk-start") &&
-				classList.includes("animation-monk-end")
-			);
-		});
-	});
-
-	it("CSS class in greeting", () => {
-		cy.clearLocalStorage();
-		cy.visit("/");
-		cy.get('#greeting').should('satisfy', ($el) => {
-			const classList = Array.from($el[0].classList);
-			return (
-				classList.includes("animation-text-start") &&
-				classList.includes("animation-text-end")
-			);
-		});
-	});
-
-	it("CSS class in salutation", () => {
-		cy.clearLocalStorage();
-		cy.visit("/");
-		cy.get("#salutation").should("satisfy", ($el) => {
-			const classList = Array.from($el[0].classList);
-			return (
-				classList.includes("animate-salutation-start") &&
-				classList.includes("animate-salutation-end")
-			);
-		});
+		const { testHasClass } = functions;
+		const array = [
+			{
+				title: "CSS class in monk image",
+				id: "monk",
+				cssClass: ["animation-monk-start", "animation-monk-end"],
+			},
+			{
+				title: "CSS class in greeting",
+				id: "greeting",
+				cssClass: ["animation-text-start", "animation-text-end"],
+			},
+			{
+				title: "CSS class in salutation",
+				id: "salutation",
+				cssClass: ["animation-salutation-start", "animation-salutation-end"],
+			},
+			{
+				title: "CSS class in advice",
+				id: "advice",
+				cssClass: ["animation-monk-end", "animation-advice-start"],
+			},
+		];
+		testHasClass("/", array);
 	});
 
 	it("If @PresentationWasShown is equal true in localstorage", () => {
-		cy.visit('/');
+		cy.visit("/");
 		console.log(localStorage.getItem("@PresentationWasShown"));
 		setInterval(() => {
-				expect(localStorage.getItem("@PresentationWasShown")).to.eq("true");	
-		 }, 7500);
+			expect(localStorage.getItem("@PresentationWasShown")).to.eq("true");
+		}, 7500);
 	});
 });
