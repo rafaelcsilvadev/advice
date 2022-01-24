@@ -5,9 +5,6 @@
 <p>
  <a href="#rodando">Rodando o Aplicativo</a> •
  <a href="#tecnologias">Tecnologias Utilizadas</a> • 
- <a href="#autor">Autor</a> • 
- <a href="#contribuicao">Contribuição</a> • 
- <a href="#licenc-a">Licença</a> • 
  <a href="#autor">Autor</a>
 </p>
 <h4>
