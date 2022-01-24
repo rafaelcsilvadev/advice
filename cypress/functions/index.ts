@@ -6,9 +6,9 @@ interface IElementInfo {
     cssClass: Array<string>
 }
 
-const testHasClass = (route: string, array: Array<IElementInfo>) => {
+const testHasClass = (route: string, array: Array<IElementInfo>, wait) => {
     cy.visit(route);
-    console.log(route);
+    cy.wait(wait);
 
     for (let i in array) {
         for (let j in array[i].cssClass) {

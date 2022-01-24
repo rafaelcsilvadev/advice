@@ -20,14 +20,9 @@ describe("Check presentation animate", () => {
 				title: "CSS class in salutation",
 				id: "salutation",
 				cssClass: ["animation-salutation-start", "animation-salutation-end"],
-			},
-			{
-				title: "CSS class in advice",
-				id: "advice",
-				cssClass: ["animation-monk-end", "animation-advice-start"],
-			},
+			}			
 		];
-		testHasClass("/", array);
+		testHasClass("/", array, 0);
 	});
 
 	it("If @PresentationWasShown is equal true in localstorage", () => {
