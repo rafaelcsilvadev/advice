@@ -20,7 +20,7 @@ describe("Check presentation animate", () => {
 				title: "CSS class in salutation",
 				id: "salutation",
 				cssClass: ["animation-salutation-start", "animation-salutation-end"],
-			}			
+			},
 		];
 		testHasClass("/", array, 0);
 	});

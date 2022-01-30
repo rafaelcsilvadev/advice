@@ -1,22 +1,23 @@
-import React, { createContext, useCallback, useState } from "react";
-import functions from "../functions";
+import React, { useCallback, useState } from "react";
 
-const storeContext = createContext<any>(0);
-
+import { createContext } from "use-context-selector";
 interface IProps {
 	children: any;
 }
 
-function Store({ children }: IProps) {
+export const storeContext = createContext<any>(null);
+
+export function Store({ children }: IProps) {
 	const [presentation, setPresentation] = useState<Promise<boolean> | boolean>(
 		false
 	);
-	const { presentationWasShown } = functions;
 
 	const presentationStorage = useCallback(() => {
-		const result = presentationWasShown();
-		setPresentation(result);
-	}, [presentation]);
+		const storage = localStorage.getItem("@PresentationWasShown");
+		if (!storage) localStorage.setItem("@PresentationWasShown", "true");
+
+		setPresentation(Boolean(storage));
+	}, []);
 
 	return (
 		// eslint-disable-next-line react/jsx-no-constructed-context-values
@@ -30,6 +31,3 @@ function Store({ children }: IProps) {
 		</storeContext.Provider>
 	);
 }
-
-export default storeContext;
-export { Store };

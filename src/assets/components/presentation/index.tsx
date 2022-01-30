@@ -1,12 +1,11 @@
-import React, { useContext, useEffect } from "react";
-import storeContext from "../../../utils/stores/store";
-import functions from "../../../utils/functions";
+import React, { useEffect } from "react";
+import { delay, addClass } from "../../../utils/functions";
+import { usePresentation } from "../../../utils/hooks";
 
 import Monk from "../../images/monk.png";
 
 export default function PresentationSystem() {
-	const { presentationStorage } = useContext(storeContext);
-	const { delay, animations } = functions;
+	const { presentationStorage } = usePresentation();
 
 	const animatingPresentation = () => {
 		const elementInfo = [
@@ -18,7 +17,6 @@ export default function PresentationSystem() {
 
 		for (let i in elementInfo) {
 			const { id, cssClass, time } = elementInfo[i];
-			const { addClass } = animations;
 			delay(() => addClass(id, cssClass), time);
 		}
 
@@ -27,7 +25,7 @@ export default function PresentationSystem() {
 
 	useEffect(() => {
 		animatingPresentation();
-	}, []);
+	});
 
 	return (
 		<>

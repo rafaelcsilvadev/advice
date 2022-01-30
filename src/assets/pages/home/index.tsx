@@ -3,18 +3,16 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import Layout from "../../components/layout";
 import Monk from "../../images/monk.png";
 import api from "../../../utils/services/api";
-import functions from "../../../utils/functions";
+import { delay, addClass } from "../../../utils/functions";
 
 export default function Home() {
 	const [data, setData] = useState<null | string>(null);
 	const [error, setError] = useState<null | string>(null);
-	const { delay, animations } = functions;
 
 	const getAdvice = async () => {
 		try {
 			const result = await api.get("/advice");
 			setData(result.data.slip.advice);
-			console.log(result);
 		} catch (e: any) {
 			setError(e.data.message);
 			console.error(e.data.message);
@@ -22,14 +20,13 @@ export default function Home() {
 	};
 
 	const showAdvice = () => {
-		const { addClass } = animations;
 		delay(() => addClass("advice", "animation-advice-end"), 5500);
 	};
 
 	useLayoutEffect(() => {
 		getAdvice();
 		showAdvice();
-	}, []);
+	});
 
 	return (
 		<div>
