@@ -20,7 +20,6 @@ export function Store({ children }: IProps) {
 	}, []);
 
 	return (
-		// eslint-disable-next-line react/jsx-no-constructed-context-values
 		<storeContext.Provider
 			value={{
 				presentationStorage,

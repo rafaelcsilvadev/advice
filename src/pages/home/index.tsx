@@ -2,20 +2,21 @@ import React, { useLayoutEffect, useState } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import Layout from "../../components/layout";
 import Monk from "../../images/monk.png";
-import api from "../../../utils/services/api";
-import { delay, addClass } from "../../../utils/functions";
+import { getAdvice } from "../../services/http";
+import { delay, addClass } from "../../utils";
 
 export default function Home() {
-	const [data, setData] = useState<null | string>(null);
+	const [data, setData] = useState();
 	const [error, setError] = useState<null | string>(null);
 
-	const getAdvice = async () => {
+	const handleGetAdvice = async () => {
 		try {
-			const result = await api.get("/advice");
-			setData(result.data.slip.advice);
-		} catch (e: any) {
-			setError(e.data.message);
-			console.error(e.data.message);
+			const result = await getAdvice();
+			setData(result.data);
+		} catch (e) {
+			const error = (e as Error).message;
+			setError(error);
+			console.log(error);
 		}
 	};
 
@@ -24,7 +25,7 @@ export default function Home() {
 	};
 
 	useLayoutEffect(() => {
-		getAdvice();
+		handleGetAdvice();
 		showAdvice();
 	});
 
