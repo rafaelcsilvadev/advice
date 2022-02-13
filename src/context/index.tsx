@@ -1,18 +1,21 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, ReactNode, FC } from "react";
 
 import { createContext } from "use-context-selector";
-interface IProps {
-	children: any;
+interface ContextProps {
+	children: ReactNode;
 }
 
-export const storeContext = createContext<any>(null);
+interface StoreContext {
+	presentation: boolean;
+	presentationStorage: () => void;
+}
 
-export function Store({ children }: IProps) {
-	const [presentation, setPresentation] = useState<Promise<boolean> | boolean>(
-		false
-	);
+export const storeContext = createContext({} as StoreContext);
 
-	const presentationStorage = useCallback(() => {
+export const Store: FC<ContextProps> = ({ children }) => {
+	const [presentation, setPresentation] = useState<boolean>(false);
+
+	const presentationStorage: () => void = useCallback(() => {
 		const storage = localStorage.getItem("@PresentationWasShown");
 		if (!storage) localStorage.setItem("@PresentationWasShown", "true");
 
@@ -29,4 +32,4 @@ export function Store({ children }: IProps) {
 			{children}
 		</storeContext.Provider>
 	);
-}
+};

@@ -1,4 +1,4 @@
-export const delay = (method: any, time: number) => {
+export const delay = (method: () => void, time: number) => {
 	setTimeout(() => {
 		method();
 	}, time);

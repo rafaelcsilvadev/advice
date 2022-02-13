@@ -8,7 +8,6 @@
 		"eslint:recommended",
 		"plugin:react/recommended",
 		"prettier",
-		"prettier/standard",
 		"plugin:@typescript-eslint/recommended"
 	],
 	"parser": "@typescript-eslint/parser",
@@ -23,8 +22,7 @@
 		"react",
 		"prettier",
 		"react-hooks",
-		"@typescript-eslint",
-		"standard"
+		"@typescript-eslint"
 	],
 	"rules": {
 		"prettier/prettier": "error",

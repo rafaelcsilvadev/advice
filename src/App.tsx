@@ -1,7 +1,7 @@
 import React from "react";
-import "./assets/styles/main.scss";
+import "./styles/main.scss";
 import { Store } from "./context";
-import Home from './assets/pages/home';
+import Home from "./pages/home";
 
 export default function App() {
 	return (

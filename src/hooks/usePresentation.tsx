@@ -1,8 +1,8 @@
 import React from "react";
 import { useContextSelector } from "use-context-selector";
-import { storeContext } from "../stores";
+import { storeContext } from "../context";
 
-export default function usePresentation() {
+const usePresentation = () => {
 	const presentation = useContextSelector(
 		storeContext,
 		(context) => context.presentation
@@ -16,4 +16,6 @@ export default function usePresentation() {
 		presentation,
 		presentationStorage,
 	};
-}
+};
+
+export default usePresentation;
