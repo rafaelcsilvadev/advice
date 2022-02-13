@@ -1,32 +1,32 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState, FC, useCallback } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import Layout from "../../components/layout";
-import Monk from "../../images/monk.png";
-import api from "../../../utils/services/api";
-import { delay, addClass } from "../../../utils/functions";
+import { monk } from "../../assets/images";
+import { getAdvice } from "../../services/http";
+import { delay, addClass } from "../../utils";
 
-export default function Home() {
+const Home: FC = () => {
 	const [data, setData] = useState<null | string>(null);
 	const [error, setError] = useState<null | string>(null);
 
-	const getAdvice = async () => {
+	const handleGetAdvice = async () => {
 		try {
-			const result = await api.get("/advice");
-			setData(result.data.slip.advice);
-		} catch (e: any) {
-			setError(e.data.message);
-			console.error(e.data.message);
+			const result = await getAdvice();
+			setData(result?.data.slip.advice);
+		} catch (e) {
+			const error = (e as Error).message;
+			setError(error);
 		}
 	};
 
-	const showAdvice = () => {
+	const showAdvice: () => void = () => {
 		delay(() => addClass("advice", "animation-advice-end"), 5500);
 	};
 
 	useLayoutEffect(() => {
-		getAdvice();
+		handleGetAdvice();
 		showAdvice();
-	});
+	}, []);
 
 	return (
 		<div>
@@ -42,7 +42,7 @@ export default function Home() {
 							xs={12}
 							md={6}
 						>
-							<img src={Monk} alt="Monk" width="500rem" />
+							<img src={monk} alt="Monk" width="500rem" />
 						</Col>
 						<Col
 							className="d-flex justify-content-center text-center"
@@ -75,7 +75,7 @@ export default function Home() {
 											variant="secondary"
 											className="bg-secondary text-decoration-none button-size-hover-start button-size-hover-end"
 											onClick={() => {
-												getAdvice();
+												handleGetAdvice();
 												setData(null);
 												setError("");
 											}}
@@ -91,4 +91,6 @@ export default function Home() {
 			</Layout>
 		</div>
 	);
-}
+};
+
+export default Home;

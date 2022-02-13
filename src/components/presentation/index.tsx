@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { delay, addClass } from "../../../utils/functions";
-import { usePresentation } from "../../../utils/hooks";
+import { delay, addClass } from "../../utils";
+import { usePresentation } from "../../hooks";
 
-import Monk from "../../images/monk.png";
+import { monk } from "../../assets/images";
 
 export default function PresentationSystem() {
 	const { presentationStorage } = usePresentation();
@@ -15,7 +15,7 @@ export default function PresentationSystem() {
 			{ id: "salutation", cssClass: "d-none", time: 6500 },
 		];
 
-		for (let i in elementInfo) {
+		for (const i in elementInfo) {
 			const { id, cssClass, time } = elementInfo[i];
 			delay(() => addClass(id, cssClass), time);
 		}
@@ -37,7 +37,7 @@ export default function PresentationSystem() {
 					<div className="d-flex flex-row justify-content-center align-items-center">
 						<img
 							id="monk"
-							src={Monk}
+							src={monk}
 							alt="Monk"
 							className="animation-monk-start"
 						/>

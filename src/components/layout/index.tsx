@@ -1,8 +1,12 @@
-import React from "react";
+import React, { memo, ReactNode, FC } from "react";
 import PresentationSystem from "../presentation";
-import { usePresentation } from "../../../utils/hooks";
+import { usePresentation } from "../../hooks";
 
-export default function Layout({ children }: any) {
+interface Layout {
+	children: ReactNode;
+}
+
+const Layout: FC<Layout> = ({ children }) => {
 	const { presentation } = usePresentation();
 
 	return (
@@ -13,4 +17,6 @@ export default function Layout({ children }: any) {
 			</section>
 		</>
 	);
-}
+};
+
+export default memo(Layout);
